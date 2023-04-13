@@ -50,21 +50,21 @@ router.post('/login', async (req, res) => {
         let token = jwt.sign(payload,'ilikeapples13')
                 console.log(token)
 
-        res.status(200).json({ message: 'Login successful',status:200,token:token });
+        res.json({ message: 'Login successful',status:true,token:token });
 
       } else {
         // If the password does not match, send an error response to the client
-        res.status(401).json({ message: 'Invalid credentials' });
+        res.json({ message: 'Invalid credentials',status:false });
         
       }
     } else {
       // If no user is found with the provided email, send an error response to the client
-      res.status(401).json({ message: 'Invalid credentials',status:401});
+      res.json({ message: 'Invalid credentials',status:false});
       
     }
   } catch (error) {
     // Send an error response to the client
-    res.status(500).json({ message: 'Failed to login',status:500 });
+    res.status(500).json({ message: 'Failed to login',status:false });
   }
 });
 
