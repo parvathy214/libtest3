@@ -33,7 +33,7 @@ function verifyToken(req,res,next) {
 
 //Get Books
 
-router.get('/api',async(req,res)=>{
+router.get('/',async(req,res)=>{
     try {
 
         let books = await BookData.find();
@@ -45,7 +45,7 @@ router.get('/api',async(req,res)=>{
     }
 })
 //Get one book
-router.get('/api/:id',async(req,res)=>{
+router.get('/:id',async(req,res)=>{
     try {
         let id = req.params.id
         let token = req.headers
@@ -61,7 +61,7 @@ router.get('/api/:id',async(req,res)=>{
 
 //Add Books
 
-router.post('/api',verifyToken,async(req,res)=>{
+router.post('/',verifyToken,async(req,res)=>{
 
 try {
     let book = req.body;
@@ -83,7 +83,7 @@ try {
 
 
 //Update Books
-router.put('/api/:id',verifyToken,async(req,res)=>{
+router.put('/:id',verifyToken,async(req,res)=>{
     try {
         let token = req.headers.authorization
         console.log('token from front end',token)
@@ -100,7 +100,7 @@ router.put('/api/:id',verifyToken,async(req,res)=>{
 
 //delete books
 
-router.delete('/api/:id',verifyToken,async(req,res)=>{
+router.delete('/:id',verifyToken,async(req,res)=>{
     try {
         let token = req.headers.authorization
         console.log('token from front end',token)
