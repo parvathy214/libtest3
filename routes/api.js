@@ -5,6 +5,8 @@ var router = express.Router();
 const jwt = require('jsonwebtoken')
 const signup = require('./login')
 router.use('/signup',signup)
+const api = require('./routes/api')
+router.use('/api',api)
 
 
 function verifyToken(req,res,next) {
